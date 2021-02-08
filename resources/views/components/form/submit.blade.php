@@ -1,0 +1,1 @@
+<button type="submit" value="{{ $label }}" class="text-white bg-gray-500 hover:bg-gray-600 px-4 py-2 appearance-none outline-none">{{ $label }}</button>

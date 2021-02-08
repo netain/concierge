@@ -1,0 +1,40 @@
+{
+    "name": "mrtea/concierge",
+    "description": "A CMS Boilerplate",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nick Tain",
+            "email": "netain@gmail.com"
+        }
+    ],
+    "require": {
+        "livewire/livewire": "^2.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MrTea\\Concierge\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MrTea\\Concierge\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+      "laravel": {
+            "providers": [
+                "MrTea\\Concierge\\Providers\\ConciergeServiceProvider"
+            ],
+            "aliases": {
+                "Concierge": "MrTea\\Concierge\\Facades\\Concierge"
+            }
+        }
+    }
+    
+}
