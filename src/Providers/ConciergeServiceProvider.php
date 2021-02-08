@@ -16,6 +16,8 @@ use MrTea\Concierge\Http\Livewire\Dashboard;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use MrTea\Concierge\Http\Middleware\RedirectToSetup;
+use MrTea\Concierge\Http\Middleware\RedirectIfAuthenticatedToConcierge;
+use MrTea\Concierge\Http\Middleware\IsAuthenticatedToConcierge;
 
 // FACADES
 use MrTea\Concierge\Concierge;
@@ -92,7 +94,8 @@ class ConciergeServiceProvider extends ServiceProvider
   		$kernel->pushMiddleware(RedirectToSetup::class);
 
 		$router = $this->app->make(Router::class);
-  		// $router->aliasMiddleware('redirectToSetup', RedirectToSetup::class);
+  		$router->aliasMiddleware('redirectIfAuth', RedirectIfAuthenticatedToConcierge::class);
+		$router->aliasMiddleware('isAuth', IsAuthenticatedToConcierge::class);
 	}
 
 	protected function registerFacades()

@@ -44,6 +44,8 @@ This package has not been released and will have to manually add the repo to you
 - [x] Create a middleware to check if it has an administrator.
 - [x] Admin model for authentication
 - [x] Create a login page
+- [x] Create a middleware to detect if admin is authenticated
+- [x] Create a middleware to redirect user to login is unauthenticated.
 - [ ] Create a forget password form
 - [ ] Send a reset password email
 - [ ] Create a reset password
