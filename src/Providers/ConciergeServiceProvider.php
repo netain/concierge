@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 use Livewire;
 use MrTea\Concierge\Http\Livewire\Authentication;
 use MrTea\Concierge\Http\Livewire\Dashboard;
+use MrTea\Concierge\Http\Livewire\Profile;
+use MrTea\Concierge\Http\Livewire\Administrators;
 
 // MIDDLEWARE
 use Illuminate\Contracts\Http\Kernel;
@@ -40,6 +42,7 @@ class ConciergeServiceProvider extends ServiceProvider
 		$this->registerLivewireComponents();
 		$this->registerMiddlewares();
 		$this->registerFacades();
+		$this->registerBladeDirectives();
 	}
 
 	protected function registerConfig()
@@ -84,7 +87,10 @@ class ConciergeServiceProvider extends ServiceProvider
 	protected function registerLivewireComponents()
 	{
 		Livewire::component('concierge-authentication', Authentication::class);
+		Livewire::component('concierge-profile', Profile::class);
 		Livewire::component('concierge-dashboard', Dashboard::class);
+		
+		Livewire::component('concierge-administrators', Administrators::class);
 	}
 
 	protected function registerMiddlewares()
@@ -103,5 +109,9 @@ class ConciergeServiceProvider extends ServiceProvider
 		$this->app->bind('concierge', function($app) {
 			return new Concierge();
 		});
+	}
+
+	protected function registerBladeDirectives()
+	{
 	}
 }

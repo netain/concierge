@@ -51,6 +51,6 @@ This package has not been released and will have to manually add the repo to you
 - [x] Create a reset password
 - [x] Create UI design element (Form, layout)
 - [x] Create a Sidebar that can be set in config file
-- [ ] Edit Profile
-- [ ] Manage Administrators
+- [x] Edit Profile
+- [x] Manage Administrators
 - [ ] Role management

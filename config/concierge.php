@@ -30,16 +30,16 @@ return [
 
 	'sidebar' => [
 		[
-			'title' => __('Dashboard'),
+			'title' => 'Dashboard',
 			'type' => 'route',
 			'url' => 'concierge.dashboard'
 		],
 		[
-			'title' => __('Concierge'),
+			'title' => 'Concierge',
 			'type' => 'title'
 		],
 		[
-			'title' => __('Administrators'),
+			'title' => 'Administrators',
 			'type' => 'route',
 			'url' => 'concierge.administrators'
 		],

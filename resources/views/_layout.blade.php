@@ -7,9 +7,7 @@
 		
 		<link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
-       
-
+        <link href="{{ asset('assets/concierge/libs/font-awesome/css/all.min.css') }}" rel="stylesheet">
         @livewireStyles
         <link rel="stylesheet" href="{{ asset('assets/concierge/css/app.css') }}">
     </head>

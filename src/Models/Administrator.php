@@ -51,15 +51,23 @@ class Administrator extends Authenticatable
 	/**
 	 * ATTRIBUTES
 	 */
-	public function getAvatarAttribute(){
+	public function getAvatarAttribute()
+	{
+		return $this->getInitialAttribute();
+	}
+
+	public function getInitialAttribute()
+	{
 		return substr($this->firstname, 0, 1) . substr($this->lastname, 0, 1);
 	}
 	
-	public function getFullnameAttribute(){
+	public function getFullnameAttribute()
+	{
 		return $this->firstname . ' ' . $this->lastname; 
 	}
 
-	public function setNewPasswordAttribute($password){
+	public function setNewPasswordAttribute($password)
+	{
 		if($password){
 			$this->password = Hash::make($password);
 		}

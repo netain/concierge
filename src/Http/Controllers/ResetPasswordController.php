@@ -31,6 +31,8 @@ class ResetPasswordController extends Controller
 		$user->new_password = request()->get('new_password');
 		$user->save();
 
+		$user->passwordReset()->delete();
+
 		session()->flash('message', ['type' => 'success' , 'msg' => __(PasswordReset::PASSWORD_RESET) ]);
 
 		return redirect(route('concierge.authenticate'));

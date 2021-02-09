@@ -5,7 +5,9 @@
 				[LOGO]
 			</div>
 			<div class="px-2">
-				
+				<a class="menu-btn cursor-pointer" data-target="#sidebar">
+					<span></span>
+				</a>
 			</div>
 		</div>
 	@endcomponent

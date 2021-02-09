@@ -8,9 +8,13 @@ html{
 }
 
 :root{
-	--header-height: 75px;
-	--sidebar-width: 320px;
-	--avatar-size: 80px;
+	--header-height			: 75px;
+	--sidebar-width			: 320px;
+	--avatar-size			: 80px;
+	--menu-btn-size			: 25px;
+	--menu-btn-bar-height	: 4px;
+	--menu-btn-color		: #FFF;
+	--modal-bg				: rgba(0, 0, 0, 0.3);
 }
 
 #main-head{
@@ -19,6 +23,12 @@ html{
 
 #sidebar{
 	width: var(--sidebar-width);
+	right: calc(var(--sidebar-width) * -1);
+	transition: right 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+}
+
+#sidebar.show{
+	right: 0;
 }
 
 .avatar{
@@ -27,6 +37,66 @@ html{
 }
 
 #sidebar,
-main{
+main,
+.modal{
 	padding-top: var(--header-height);
+}
+
+/**
+* Menu Button
+**/
+
+.menu-btn{
+	@apply block relative;
+	width: var(--menu-btn-size);
+	height: var(--menu-btn-size);
+}
+
+.menu-btn::before,
+.menu-btn::after{
+	content: '';
+	transition: transform 100ms cubic-bezier(0.000, 0.000, 0.580, 1.000), top 100ms 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+.menu-btn::before,
+.menu-btn::after,
+.menu-btn span{
+	@apply block absolute origin-center w-full;
+	background-color: var(--menu-btn-color);
+	height: var(--menu-btn-bar-height);
+}
+
+.menu-btn:before{
+	top: 0;
+}
+.menu-btn span{
+	top: calc((var(--menu-btn-size) / 2 ) - (var(--menu-btn-bar-height) / 2));
+	opacity: 1;
+	transition: opacity 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+}
+
+.menu-btn:after{
+	top: calc(var(--menu-btn-size) - var(--menu-btn-bar-height));
+}
+
+.menu-btn.close:before,
+.menu-btn.close:after{
+	top: calc((var(--menu-btn-size) / 2 ) - (var(--menu-btn-bar-height) / 2));
+	transition: top 100ms cubic-bezier(0.000, 0.000, 0.580, 1.000), transform 100ms 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+.menu-btn.close:before{
+	transform: rotate(45deg);
+}
+
+.menu-btn.close:after{
+	transform: rotate(-45deg);
+}
+
+.menu-btn.close span{
+	opacity: 0;
+}
+
+.modal{
+	background-color: var(--modal-bg);
 }
