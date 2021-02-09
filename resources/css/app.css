@@ -6,3 +6,27 @@ html{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
 }
+
+:root{
+	--header-height: 75px;
+	--sidebar-width: 320px;
+	--avatar-size: 80px;
+}
+
+#main-head{
+	height: var(--header-height);
+}
+
+#sidebar{
+	width: var(--sidebar-width);
+}
+
+.avatar{
+	height: var(--avatar-size);
+	width: var(--avatar-size);
+}
+
+#sidebar,
+main{
+	padding-top: var(--header-height);
+}

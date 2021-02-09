@@ -15,9 +15,9 @@
     </head>
     <body class="antialiased bg-gray-300">
         @if(Concierge::auth()->check())
-            {{-- @include('concierge::components.sidebar')
+            {!! Concierge::sidebar()->render() !!}
+            @include('concierge::components.header')
             
-            @include('concierge::components.header') --}}
             <main>
                 @yield('content')
             </main>

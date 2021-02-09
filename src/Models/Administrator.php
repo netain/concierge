@@ -5,12 +5,15 @@ namespace MrTea\Concierge\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+use MrTea\Concierge\Models\PasswordReset;
 
 use Hash;
 
 class Administrator extends Authenticatable
 {
-	use HasFactory;
+	use HasFactory, Notifiable;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -36,6 +39,14 @@ class Administrator extends Authenticatable
 		'password',
 		'remember_token',
 	];
+
+	/**
+     * Get the post's image.
+     */
+    public function passwordReset()
+    {
+        return $this->morphOne(PasswordReset::class, 'authenticatable');
+    }
 
 	/**
 	 * ATTRIBUTES

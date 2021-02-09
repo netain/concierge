@@ -2,7 +2,7 @@
 
 
 @section('content')
-	<div class="container mx-auto px-2">
+	@component('concierge::components.container')
 		<div class="flex -mx-2 justify-center">
 			<div class="w-full px-2">
 				@component('concierge::components.card', ['title' => 'Installation Completed!'])
@@ -14,5 +14,5 @@
 				@endcomponent
 			</div>
 		</div>
-	</div>
+	@endcomponent
 @endsection
