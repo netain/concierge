@@ -14,12 +14,11 @@
 			</div>
 		</div>
 		<ul class="py-4">
-			<li>
-				Sidebar....
-			</li>
-			<li>
-				Sidebar....
-			</li>
+			@if ($items->count())
+				@foreach ($items as $item)
+					@include('concierge::components.sidebar.'. $item['type'], $item)
+				@endforeach
+			@endif
 		</ul>
 	</div>
 </aside>

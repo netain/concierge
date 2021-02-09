@@ -11,4 +11,5 @@ Route::post('/reset-password', 'MrTea\Concierge\Http\Controllers\ResetPasswordCo
 Route::middleware('isAuth')->group(function(){
 	Route::post('/logout', 'MrTea\Concierge\Http\Controllers\LogoutController@index')->name('logout');
 	Route::get('/dashboard', MrTea\Concierge\Http\Livewire\Dashboard::class)->name('dashboard');
+	Route::get('/administrators', MrTea\Concierge\Http\Livewire\Dashboard::class)->name('administrators');
 });

@@ -46,7 +46,11 @@ This package has not been released and will have to manually add the repo to you
 - [x] Create a login page and logout
 - [x] Create a middleware to detect if admin is authenticated
 - [x] Create a middleware to redirect user to login is unauthenticated.
-- [ ] Create a forget password form
-- [ ] Send a reset password email
-- [ ] Create a reset password
-- [ ] Create UI design element (Form, layout)
+- [x] Create a forget password form
+- [x] Send a reset password email
+- [x] Create a reset password
+- [x] Create UI design element (Form, layout)
+- [x] Create a Sidebar that can be set in config file
+- [ ] Edit Profile
+- [ ] Manage Administrators
+- [ ] Role management

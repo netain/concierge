@@ -26,5 +26,22 @@ return [
 	'logo' => [
 		'login' => '/assets/concierge/img/logo-placeholder.png',
 		'nav'	=> '/assets/concierge/img/logo-placeholder.png'
+	],
+
+	'sidebar' => [
+		[
+			'title' => __('Dashboard'),
+			'type' => 'route',
+			'url' => 'concierge.dashboard'
+		],
+		[
+			'title' => __('Concierge'),
+			'type' => 'title'
+		],
+		[
+			'title' => __('Administrators'),
+			'type' => 'route',
+			'url' => 'concierge.administrators'
+		],
 	]
 ];
