@@ -120,7 +120,7 @@ class ConciergeServiceProvider extends ServiceProvider
 
 	protected function registerGates()
 	{
-		$this->registerPolicies();
+		
 
 		Gate::define('update-post', function (User $user, Post $post) {
 			return $user->id === $post->user_id;
