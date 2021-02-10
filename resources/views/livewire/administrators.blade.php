@@ -53,7 +53,6 @@
 										@hasPermissionTo('delete-admin')
 											<a wire:click.prevent="delete({{$row->id}})" class="ml-2 cursor-pointer text-sm flex items-center text-white bg-red-700 hover:bg-red-900 px-2 py-1">Delete<i class="fas fa-trash ml-2"></i></a>
 										@endhasPermissionTo
-										
 									@endif
 								</div>
 							</td>

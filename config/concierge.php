@@ -32,18 +32,21 @@ return [
 		[
 			'title' => 'Dashboard',
 			'type' => 'route',
-			'url' => 'concierge.dashboard'
+			'url' => 'concierge.dashboard',
+			'order' => 1,
 		],
 		[
 			'title' => 'Concierge',
 			'type' => 'title',
-			'permission' => 'manage-admin'
+			'permission' => 'manage-admin',
+			'order' => 1000,
 		],
 		[
 			'title' => 'Administrators',
 			'type' => 'route',
 			'url' => 'concierge.administrators',
-			'permission' => 'manage-admin'
+			'permission' => 'manage-admin',
+			'order' => 1010,
 		],
 	],
 

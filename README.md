@@ -6,37 +6,28 @@ This is a startup CMS for Laravel and Livewire. The package includes:
 - A custom Route
 - A default style using TailwindCSS
 
+Note that this package has not been released on packagist.
+
 # Installation
 
-## Without Composer
 1. Add service provider to `config/app.php` : 
-
-```php
-'providers' => [
-	...,
-	MrTea\Concierge\ConciergeServiceProvider::class
-]
-```
-2. Run `php artisan migrate`
-
-## With Composer (Not ready)
-
-This package has not been released and will have to manually add the repo to your composer.json
-
-1. Add repo directory to `composer.json`
    
-```json
-...
-"repositories": [
-   	...,
-	{
-   	  "type": "path",
-   	  "url": "[PATH TO CONCIERGE]"
-   	}
-]
-```
+	```php
+	'providers' => [
+		...,
+		MrTea\Concierge\ConciergeServiceProvider::class
+	]
+	```
 
-2. Run `composer require mrtea\concierge`
+2. Add alias to `config/app.php` : 
+   
+   ```php
+	'aliases' => [
+		...,
+		MrTea\Concierge\Facades\Concierge::class
+	]
+	```
+
 3. Run `php artisan migrate`
 
 ## Config file
@@ -90,3 +81,6 @@ To add in your blade:
 - [x] Edit Profile
 - [x] Manage Administrators
 - [x] Role management
+- [ ] Create a function to add item to sidebar menu
+- [ ] Add package to packagist to be able to install via composer
+- [ ] Documentation
