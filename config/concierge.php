@@ -43,5 +43,9 @@ return [
 			'type' => 'route',
 			'url' => 'concierge.administrators'
 		],
+	],
+
+	'roles' => [
+		'admin' => []
 	]
 ];

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Gate;
 
 // LIVEWIRE COMPONENTS
 use Livewire;
@@ -23,6 +24,7 @@ use MrTea\Concierge\Http\Middleware\IsAuthenticatedToConcierge;
 
 // FACADES
 use MrTea\Concierge\Concierge;
+
 
 class ConciergeServiceProvider extends ServiceProvider
 {
@@ -43,6 +45,7 @@ class ConciergeServiceProvider extends ServiceProvider
 		$this->registerMiddlewares();
 		$this->registerFacades();
 		$this->registerBladeDirectives();
+		$this->registerGates();
 	}
 
 	protected function registerConfig()
@@ -113,5 +116,14 @@ class ConciergeServiceProvider extends ServiceProvider
 
 	protected function registerBladeDirectives()
 	{
+	}
+
+	protected function registerGates()
+	{
+		$this->registerPolicies();
+
+		Gate::define('update-post', function (User $user, Post $post) {
+			return $user->id === $post->user_id;
+		});
 	}
 }

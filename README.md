@@ -39,6 +39,42 @@ This package has not been released and will have to manually add the repo to you
 2. Run `composer require mrtea\concierge`
 3. Run `php artisan migrate`
 
+## Config file
+
+If you want to modify the Concierge config file, you can publish the config file:
+
+```bash
+php artisan vendor:publish --provider='MrTea\Concierge\Providers\ConciergeServiceProvider' --tag='config'
+```
+
+## Assets
+
+To publish the css and js :
+
+```bash
+php artisan vendor:publish --provider='MrTea\Concierge\Providers\ConciergeServiceProvider' --tag='assets'
+```
+
+To add in your blade:
+
+### CSS
+
+```html
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<link href="{{ asset('assets/concierge/libs/font-awesome/css/all.min.css') }}" rel="stylesheet">
+@livewireStyles
+<link rel="stylesheet" href="{{ asset('assets/concierge/css/app.css') }}">
+```
+
+### JS
+
+```html
+@livewireScripts
+<script src="{{ asset('assets/concierge/js/app.js') }}"></script>
+@stack('scripts')
+```
+
 # TO DO
 
 - [x] Create a middleware to check if it has an administrator.
