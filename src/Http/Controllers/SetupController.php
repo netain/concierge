@@ -20,6 +20,8 @@ class SetupController extends Controller
             'new_password'  => 'required|min:6|confirmed',
         ]);
 
+        $data['role'] = 'super-admin';
+
         Administrator::create($data);
         return redirect(route('concierge.setup.completed'));
     }

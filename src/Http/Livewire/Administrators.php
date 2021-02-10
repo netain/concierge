@@ -10,6 +10,10 @@ use MrTea\Concierge\Traits\Livewire\IsListable;
 use MrTea\Concierge\Traits\Livewire\IsFormable;
 use MrTea\Concierge\Traits\Livewire\IsDeletable;
 
+use Illuminate\Support\Facades\Gate;
+
+use Concierge;
+
 class Administrators extends Component
 {
 	use IsListable, IsFormable, IsDeletable;
@@ -19,6 +23,7 @@ class Administrators extends Component
 		'lastname' => '',
 		'email' => '',
 		'password' => '',
+		'role' => 'guest',
 		'locale' => 'en',
 	];
 
@@ -28,11 +33,20 @@ class Administrators extends Component
 	public $password;
 	public $locale;
 	public $avatar;
+	public $role;
 	public $new_password;
 	public $new_password_confirmation;
 
-	public function render()
+	public function mount()
 	{
+		if(!Concierge::auth()->user()->hasPermissionTo('manage-admin')){
+			abort(403);
+		}
+	}
+
+	public function render()
+	{	
+		Concierge::role()->getAllRoles();
 		return view('concierge::livewire.administrators')
         ->extends('concierge::_layout')
         ->section('content')
@@ -51,8 +65,13 @@ class Administrators extends Component
 					->orWhere('email', 'LIKE', "%{$term}%")
 					;
 				});
-			}
+			}			
 		}
+
+		if(!Concierge::auth()->user()->hasPermissionTo('see-super-admin')){
+			$rowset->where('role', '!=', 'super-admin');
+		}
+
 		$data['rowset'] = $this->paginate($rowset);
 
 		return $data;
@@ -71,6 +90,7 @@ class Administrators extends Component
             'firstname' => 'required',
             'lastname' => 'required',
 			'locale' => 'required',
+			'role' => 'required',
             'email' => $email,
             'new_password' => $password,
         ];

@@ -8,8 +8,11 @@
 				Ciao <strong>{{ Concierge::auth()->user()->firstname }}</strong>!
 			</div>
 			<div class="text-center text-xs flex items-center justify-center">
-				<a href="{{ route('concierge.profile') }}">Profile</a>
-				<div class="mx-2">|</div>
+				@hasPermissionTo('edit-profile')
+					<a href="{{ route('concierge.profile') }}">Profile</a>
+					<div class="mx-2">|</div>
+				@endhasPermissionTo
+
 				@include('concierge::components.logout')
 			</div>
 		</div>

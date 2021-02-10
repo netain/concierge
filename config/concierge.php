@@ -36,16 +36,42 @@ return [
 		],
 		[
 			'title' => 'Concierge',
-			'type' => 'title'
+			'type' => 'title',
+			'permission' => 'manage-admin'
 		],
 		[
 			'title' => 'Administrators',
 			'type' => 'route',
-			'url' => 'concierge.administrators'
+			'url' => 'concierge.administrators',
+			'permission' => 'manage-admin'
 		],
 	],
 
 	'roles' => [
-		'admin' => []
+		'super-admin' => [
+			'label' => 'Super-Admin',
+			'parent' => 'admin',
+			'permissions' => [
+				'assign-super-admin',
+				'see-super-admin',
+			],
+		],
+		'admin' => [
+			'parent' => 'guest',
+			'label' => 'Administrator',
+			'permissions' => [
+				'manage-admin',
+				'create-admin',
+				'update-admin',
+				'delete-admin',
+				'assign-admin-role'
+			]
+		],
+		'guest' => [
+			'label' => 'Guest',
+			'permissions' => [
+				'edit-profile'
+			]
+		],
 	]
 ];

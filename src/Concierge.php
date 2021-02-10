@@ -2,18 +2,21 @@
 
 namespace MrTea\Concierge;
 
-use MrTea\Concierge\Sidebar;
-use MrTea\Concierge\PasswordReset;
+use MrTea\Concierge\Helpers\Sidebar;
+use MrTea\Concierge\Helpers\PasswordReset;
+use MrTea\Concierge\Helpers\Role;
+use MrTea\Concierge\Helpers\Html;
 
 class Concierge{
 
 	protected $sidebar;
 	protected $passwordReset;
+	protected $permission;
+	protected $html;
 
 	public function __construct()
 	{
-		$this->initSidebar();
-		$this->initResetPassword();
+		$this->initHelpers();
 	}
 
 	public function auth()
@@ -21,14 +24,12 @@ class Concierge{
 		return auth(config('concierge.auth.guard'));
 	}
 
-	protected function initSidebar()
+	protected function initHelpers()
 	{
 		$this->sidebar = new Sidebar();
-	}
-
-	protected function initResetPassword()
-	{
 		$this->passwordReset = new PasswordReset();
+		$this->role = new Role();
+		$this->html = new Html();
 	}
 
 	public function sidebar()
@@ -41,15 +42,13 @@ class Concierge{
 		return $this->passwordReset;
 	}
 
-	public function arrayToHtmlAttribs($attribs)
+	public function role()
 	{
-		$htmlAttribs = "";
-		if(count($attribs)){
-			foreach($attribs as $name => $value){
-				$htmlAttribs .= "{$name}=\"{$value}\" ";
-			}
-		}
+		return $this->role;
+	}
 
-		return $htmlAttribs;
+	public function html()
+	{
+		return $this->html;
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MrTea\Concierge;
+namespace MrTea\Concierge\Helpers;
 
 class Sidebar{
 	public function render()

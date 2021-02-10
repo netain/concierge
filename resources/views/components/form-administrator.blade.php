@@ -39,6 +39,24 @@
 				<p class="text-red-500 text-xs mt-1">{{ $errors->first('locale') }}</p>
 			@endif
 		</div>
+	</div>
+		@if (isset($role) && Concierge::auth()->user()->hasPermissionTo('assign-admin-role'))
+			<div class="flex flex-wrap -mx-2">
+				<div class="w-1/2 pb-4 px-2">
+					<label for="role" class="font-medium text-xs">{{ __('Role') }}</label>
+					{{-- <input type="email" wire:model="email" class="block w-full mt-1 p-2 appearance-none outline-none border font-light"> --}}
+					<select wire:model="role" class="form-select block w-full mt-1 p-2 appearance-none outline-none border font-light">
+						@foreach (Concierge::role()->getAllRoles() as $value => $label)
+							<option value="{{ $value }}">{{ $label }}</option>
+						@endforeach
+					</select>
+					@if ($errors->has('role'))
+						<p class="text-red-500 text-xs mt-1">{{ $errors->first('role') }}</p>
+					@endif
+				</div>
+			</div>
+		@endif
+	<div class="flex flex-wrap -mx-2">	
 		<div class="w-1/2 pb-4 px-2">
 			<label for="new_password" class="font-medium text-xs">{{ __('Password') }}</label>
 			<input type="password" wire:model="new_password" class="block w-full mt-1 p-2 appearance-none outline-none border font-light">

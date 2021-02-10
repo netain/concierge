@@ -89,4 +89,4 @@ To add in your blade:
 - [x] Create a Sidebar that can be set in config file
 - [x] Edit Profile
 - [x] Manage Administrators
-- [ ] Role management
+- [x] Role management

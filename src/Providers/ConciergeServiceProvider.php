@@ -3,6 +3,7 @@
 namespace MrTea\Concierge\Providers;
 
 use Illuminate\Support\ServiceProvider;
+// use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -45,7 +46,6 @@ class ConciergeServiceProvider extends ServiceProvider
 		$this->registerMiddlewares();
 		$this->registerFacades();
 		$this->registerBladeDirectives();
-		$this->registerGates();
 	}
 
 	protected function registerConfig()
@@ -116,14 +116,15 @@ class ConciergeServiceProvider extends ServiceProvider
 
 	protected function registerBladeDirectives()
 	{
+		$concierge = $this->app->concierge;
+
+		Blade::if('hasPermissionTo', function ($permission) use ($concierge){
+			return $concierge->auth()->user()->hasPermissionTo($permission);
+		});
 	}
 
 	protected function registerGates()
 	{
-		
-
-		Gate::define('update-post', function (User $user, Post $post) {
-			return $user->id === $post->user_id;
-		});
+		$this->registerPolicies();
 	}
 }

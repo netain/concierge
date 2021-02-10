@@ -10,7 +10,14 @@
 			@if (isset($btns))
 				<div class="flex justify-end items-center">
 					@foreach ($btns as $btn)
-						<a {!! Concierge::arrayToHtmlAttribs($btn['attributes']) !!}>{!! $btn['label'] !!}</a>
+						@if (isset($btn['permission']))
+							@hasPermissionTo($btn['permission'])
+								<a {!! Concierge::html()->arrayToHtmlAttribs($btn['attributes']) !!}>{!! $btn['label'] !!}</a>
+							@endhasPermissionTo
+						@else
+							<a {!! Concierge::html()->arrayToHtmlAttribs($btn['attributes']) !!}>{!! $btn['label'] !!}</a>
+						@endif
+						
 					@endforeach
 				</div>
 			@endif

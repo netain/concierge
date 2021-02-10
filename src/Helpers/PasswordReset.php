@@ -1,6 +1,6 @@
 <?php
 
-namespace MrTea\Concierge;
+namespace MrTea\Concierge\Helpers;
 
 use Illuminate\Support\Str;
 use Carbon\Carbon;

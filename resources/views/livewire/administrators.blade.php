@@ -6,6 +6,7 @@
 			'btns' => [
 				[
 					'label' => 'Create<i class="fas fa-plus ml-2"></i>',
+					'permission' => 'create-admin',
 					'attributes' => [
 						'class' => 'ml-2 cursor-pointer text-sm flex items-center text-white bg-gray-700 hover:bg-gray-900 px-2 py-1',
 						'wire:click.prevent' => 'edit'
@@ -22,6 +23,7 @@
 				<thead>
 					<tr>
 						<th class="text-left p-2">Fullname</th>
+						<th class="text-left p-2">Role</th>
 						<th class="text-left p-2">Email</th>
 						<th class="text-right p-2">Actions</th>
 					</tr>
@@ -34,6 +36,9 @@
 								{!! $row->fullname !!}
 							</td>
 							<td class="p-2">
+								{!! $row->role_name !!}
+							</td>
+							<td class="p-2">
 								{!! $row->email !!}
 							</td>
 							<td valign="middle" class="p-2">
@@ -41,8 +46,14 @@
 									@if(Concierge::auth()->user()->id == $row->id)
 										<a wire:click.prevent="edit({{$row->id}})" class="ml-2 cursor-pointer text-sm flex items-center text-white bg-blue-700 hover:bg-blue-900 px-2 py-1">Edit<i class="fas fa-edit ml-2"></i></a>
 									@else
-										<a wire:click.prevent="edit({{$row->id}})" class="ml-2 cursor-pointer text-sm flex items-center text-white bg-blue-700 hover:bg-blue-900 px-2 py-1">Edit<i class="fas fa-edit ml-2"></i></a>
-										<a wire:click.prevent="delete({{$row->id}})" class="ml-2 cursor-pointer text-sm flex items-center text-white bg-red-700 hover:bg-red-900 px-2 py-1">Delete<i class="fas fa-trash ml-2"></i></a>
+										@hasPermissionTo('update-admin')
+											<a wire:click.prevent="edit({{$row->id}})" class="ml-2 cursor-pointer text-sm flex items-center text-white bg-blue-700 hover:bg-blue-900 px-2 py-1">Edit<i class="fas fa-edit ml-2"></i></a>
+										@endhasPermissionTo
+										
+										@hasPermissionTo('delete-admin')
+											<a wire:click.prevent="delete({{$row->id}})" class="ml-2 cursor-pointer text-sm flex items-center text-white bg-red-700 hover:bg-red-900 px-2 py-1">Delete<i class="fas fa-trash ml-2"></i></a>
+										@endhasPermissionTo
+										
 									@endif
 								</div>
 							</td>

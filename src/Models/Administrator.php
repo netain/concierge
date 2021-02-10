@@ -8,12 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use MrTea\Concierge\Models\PasswordReset;
+use MrTea\Concierge\Traits\Models\HasRole;
 
 use Hash;
 
 class Administrator extends Authenticatable
 {
-	use HasFactory, Notifiable;
+	use HasFactory, Notifiable, HasRole;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -28,6 +29,7 @@ class Administrator extends Authenticatable
 		'locale',
 		'avatar',
 		'new_password',
+		'role'
 	];
 
 	/**
@@ -41,8 +43,9 @@ class Administrator extends Authenticatable
 	];
 
 	/**
-     * Get the post's image.
+     * RELATIONS
      */
+
     public function passwordReset()
     {
         return $this->morphOne(PasswordReset::class, 'authenticatable');
