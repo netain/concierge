@@ -46,7 +46,6 @@ class Administrators extends Component
 
 	public function render()
 	{	
-		Concierge::role()->getAllRoles();
 		return view('concierge::livewire.administrators')
         ->extends('concierge::_layout')
         ->section('content')
