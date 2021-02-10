@@ -6,8 +6,6 @@ This is a startup CMS for Laravel and Livewire. The package includes:
 - A custom Route
 - A default style using TailwindCSS
 
-Note that this package has not been released on packagist.
-
 # Installation
 
 1. Add service provider to `config/app.php` : 
